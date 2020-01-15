@@ -16,6 +16,7 @@
             android:fontFamily="@font/oswald_bold"
             android:text="@string/play"
             android:textColor="#0A0A0A"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

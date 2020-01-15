@@ -76,6 +76,61 @@ public class MyBottomSheet extends BottomSheetDialogFragment implements View.OnC
     public void onClick(View view) {
 
         if (nextCount > 0) {
+
+            binding.viewNext.setVisibility(View.INVISIBLE);
+            binding.linearLayout.setVisibility(View.GONE);
+            binding.viewT1.setVisibility(View.GONE);
+            binding.view21.setVisibility(View.INVISIBLE);
+            binding.linearLayout3.setVisibility(View.VISIBLE);
+
+
+            binding.layoutOswald.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    binding.layoutOswald.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                    Transition transition = new Fade(Visibility.MODE_IN);
+                    transition.setDuration(500);
+                    TransitionManager.beginDelayedTransition(binding.layoutOswald, transition);
+                    binding.tvOswald.setVisibility(View.VISIBLE);
+                    binding.tvReady.setVisibility(View.VISIBLE);
+                    binding.view99.setVisibility(View.VISIBLE);
+
+                    return true;
+                }
+            });
+
+            binding.linearLayout3.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    binding.linearLayout3.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                    Transition transition = new Slide(Gravity.RIGHT);
+                    transition.setDuration(500);
+                    TransitionManager.beginDelayedTransition(binding.linearLayout3, transition);
+
+                    binding.view31.setVisibility(View.VISIBLE);
+                    binding.view32.setVisibility(View.VISIBLE);
+                    binding.view33.setVisibility(View.VISIBLE);
+
+                    return true;
+                }
+            });
+
+            binding.mainContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    binding.mainContainer.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                    Transition transition = new Slide(Gravity.BOTTOM);
+                    transition.setDuration(500);
+                    TransitionManager.beginDelayedTransition(binding.mainContainer, transition);
+                    binding.viewConfirm.setVisibility(View.VISIBLE);
+
+                    return true;
+                }
+            });
+
             return;
         }
         if (view.getId() == R.id.view_next) {
@@ -84,7 +139,7 @@ public class MyBottomSheet extends BottomSheetDialogFragment implements View.OnC
 
             binding.containerOne.setVisibility(View.GONE);
             binding.containerTwo.setVisibility(View.VISIBLE);
-
+            binding.view21.setVisibility(View.VISIBLE);
             binding.viewT1.setVisibility(View.GONE);
 
             binding.mainContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -122,7 +177,6 @@ public class MyBottomSheet extends BottomSheetDialogFragment implements View.OnC
     private void startAnimate0() {
 
         Transition transition = new Fade(Visibility.MODE_IN);
-        transition.setStartDelay(200);
         transition.setDuration(500);
         TransitionManager.beginDelayedTransition(binding.mainContainer, transition);
         binding.viewT1.setVisibility(View.VISIBLE);
